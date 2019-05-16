@@ -64,7 +64,7 @@ ul {
 
 .subtleText {
   color: #D1D1D1;
-  font-size: .75em; 
+  font-size: .75em;
 }
 
 
@@ -119,6 +119,12 @@ ul {
 
 .pigTile:hover {
   transform: scale(1.05);
+}
+
+.centered-field-item{
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
 }
 
 
