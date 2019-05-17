@@ -11,9 +11,11 @@ export default class HogBox extends Component {
         hogName: '',
         hogWeight: 0,
         onlyGreased: false
-      }
+      },
+      hiddenHogs: []
     }
 
+    this.hideHog = this.hideHog.bind(this)
     this.updateFilter = this.updateFilter.bind(this)
   }
 
@@ -28,14 +30,21 @@ export default class HogBox extends Component {
     })
   }
 
+  hideHog(hog){
+    this.setState({
+      hiddenHogs: [...this.state.hiddenHogs, hog]
+    })
+  }
+
   renderHogTiles(){
     return this.props.hogs.map(hog => {
-      if(!hog.name.includes(this.state.filter.hogName) ||
+      if(!hog.name.toLowerCase().includes(this.state.filter.hogName.toLowerCase()) ||
         !(hog.weight > this.state.filter.hogWeight) ||
-        (this.state.filter.onlyGreased && !hog.greased)){
+        (this.state.filter.onlyGreased && !hog.greased) ||
+        this.state.hiddenHogs.includes(hog)){
           return null
         }
-      return <HogTile hog={hog}/>
+      return <HogTile key={hog.name} hideHog={this.hideHog} hog={hog}/>
     })
   }
 

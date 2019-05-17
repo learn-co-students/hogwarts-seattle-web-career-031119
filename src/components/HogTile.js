@@ -31,9 +31,6 @@ export default class HogTile extends Component {
           <strong>Highest Medal Achieved:</strong> {this.props.hog['highest medal achieved']}
         </div>
         <div>
-          <strong>Speciality:</strong> {this.props.hog.specialty}
-        </div>
-        <div>
           <strong>greased:</strong> {this.props.hog.greased? <i className="check icon"></i> : <i className="x icon"></i>}
         </div>
 
@@ -55,11 +52,21 @@ export default class HogTile extends Component {
 
         <div className="content">
           <h3 className="content">{this.props.hog.name}</h3>
+          <div>
+            <strong>Speciality:</strong> {this.props.hog.specialty}
+          </div>
         </div>
 
-        <div onClick={this.toggleRevealed} className="ui bottom attached button">
-          <i className="add icon"></i>
-          See Info
+        <div className="ui bottom attached buttons">
+          <div onClick={this.toggleRevealed} className="ui button">
+            <i className="add icon"></i>
+            See Info
+          </div>
+          <div onClick={() => this.props.hideHog(this.props.hog)} className="ui button">
+            <i className="eye slash outline icon"></i>
+            Hide Pig
+          </div>
+
         </div>
         <div className="extra data">
           {this.conditionallyRenderHogInfo()}
