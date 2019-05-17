@@ -107,8 +107,9 @@ ul {
 }
 .minPigTile {
   width: 250px;
-  height: 250px;
+  height: 320px;
   background-size: cover;
+  /* clear: both; */
 }
 
 .maxPigTile {

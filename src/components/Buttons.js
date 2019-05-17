@@ -7,7 +7,7 @@ class Buttons extends Component {
 
     render() {
         return(
-            <div>
+            <div className="footer">
                 <button onClick={this.props.moreClick}>More Info</button>
                 <button>Hide</button>
             </div>

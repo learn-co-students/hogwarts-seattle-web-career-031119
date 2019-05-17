@@ -1,10 +1,8 @@
 import React, {Component} from 'react'
-import augustus from '../hog-imgs/hog_imgs'
 
 class CardFront extends Component {
     constructor(props) {
         super(props)
-        console.log(props)
     }
 
     image = () => {
@@ -18,12 +16,11 @@ class CardFront extends Component {
         
         return(
             <div>
-                <img alt={this.props.hog.name} src={this.image()}/>
-                <br />
+                <div>
+                    <img alt={this.props.hog.name} src={this.image()}/>
+                </div>
                 <h3>{this.props.hog.name}</h3>
-                <br />
                 {this.props.hog.specialty}
-                <br />
             </div>
         )
     }

@@ -9,13 +9,20 @@ class Hogs extends Component {
         }
     }
 
+    hide = (name) => {
+        let hogs = this.state.hogs
+        let hog = hogs.find( hog => hog.name === name )
+        hog.visible = false
+        this.setState(hogs)
+    }
+
     render() {
         let hogs = this.state.hogs.filter( hog => hog.visible === true )
         
         return(
             <div>
                 {hogs.map( hog => {
-                    return <Hog hog={hog} key={hog.name}/>
+                    return <Hog hog={hog} key={hog.name} hideClick={this.hide}/>
                 })}
             </div>
         )

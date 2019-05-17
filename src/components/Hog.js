@@ -22,11 +22,13 @@ class Hog extends Component {
     render() {
         return(
             <div className="pigTile">
-                {this.props.hog.side === "front" ?
-                <CardFront hog={this.props.hog}/> :
-                <CardBack hog={this.props.hog}/>}
-                <Buttons moreClick={this.flip}/>
-            </div>
+                <div className="minPigTile">
+                    {this.props.hog.side === "front" ?
+                    <CardFront hog={this.props.hog}/> :
+                    <CardBack hog={this.props.hog}/>}
+                </div>
+                <Buttons moreClick={this.flip} hideClick={this.hide}/>
+            </div> 
         )
     }
 }

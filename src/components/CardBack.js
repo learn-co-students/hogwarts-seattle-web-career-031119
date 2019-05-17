@@ -7,15 +7,20 @@ class CardBack extends Component {
 
     render() {
         return(
-            <div>
+            // <div>
                 <ul>
-                    {this.props.hog['highest medal achieved']}
-                    <h3>{this.props.hog.greased ? 
+                    <li>
+                        <h3>{this.props.hog.name}</h3>
+                    </li>
+                    <li><h3 className="achievementText">
+                        {this.props.hog['highest medal achieved']}
+                    </h3></li>
+                    <li><h3>{this.props.hog.greased ? 
                          'GREASED' :
                          'ungreased'
-                    }</h3>
+                    }</h3></li>
                 </ul>
-            </div>
+            // </div>
         )
     }
 }
