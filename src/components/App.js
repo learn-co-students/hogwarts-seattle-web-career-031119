@@ -14,14 +14,14 @@ class App extends Component {
   }
 
   selectSort = (ev) => {
-    console.log(ev.target.value)
+    this.setState({sort: ev.target.value})
   }
 
   render() {
     return (
       <div className="App">
           <Nav />
-          <SortBar action={this.selectSort}/>
+          <SortBar selectSort={this.selectSort}/>
           <Hogs hogs={hogs} sortMethod={this.state.sort} />
       </div>
     )

@@ -19,6 +19,9 @@ class CardBack extends Component {
                          'GREASED' :
                          'ungreased'
                     }</h3></li>
+                    <li><h3>
+                        WEIGHT: {this.props.hog.weight} tons
+                    </h3></li>
                 </ul>
             // </div>
         )

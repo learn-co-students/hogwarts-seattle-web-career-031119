@@ -3,13 +3,12 @@ import React, {Component} from 'react'
 class SortBar extends Component {
     constructor(props) {
         super(props)
-        console.log(props)
     }
 
     render() {
         return(
             <div className="">
-                <select onChange={this.props.action.selectSort}>
+                <select onChange={(e) => this.props.selectSort(e)}>
                     <option value="none">No sort</option>
                     <option value="alpha">Alphabetical</option>
                     <option value="weight">Weight</option>
