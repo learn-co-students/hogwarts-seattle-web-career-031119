@@ -10,10 +10,15 @@ class PigInfo extends Component {
     }
   }
 
+  handleClose = () => {
+    this.props.removePigInfo()
+  }
+
   render() {
     console.log('here')
     return (
-      <div>
+      <div className="infoTile">
+        <small onClick={ this.handleClose } className="xButton">X</small>
         <small>More Info for:</small><h4>{this.props.currentPig.name}</h4>
         <p>Highest Medal Achieved: {this.props.currentPig['highest medal achieved']}</p>
         {this.isGreased()}

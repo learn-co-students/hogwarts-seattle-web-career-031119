@@ -25,7 +25,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          < Nav handleFilter={this.handleFilter} handleSelect={this.handleSelect}/>
+          <Nav
+            handleFilter={this.handleFilter}
+            handleSelect={this.handleSelect}
+          />
           <PigsContainer sort={this.state.sort} hogs={hogs} filter={this.state.filter}/>
       </div>
     )

@@ -15,6 +15,7 @@ import Prosciutto from '../hog-imgs/the_prosciutto_concern.jpg'
 import Trouble from '../hog-imgs/trouble.jpg'
 import Truffle from '../hog-imgs/truffleshuffle.jpg'
 
+
 const IMGS = {
   'Mudblood': Mud,
   'Augustus Gloop': Augustus,
@@ -57,13 +58,8 @@ class PigsContainer extends Component {
       return 0;
   }
 
-  generatePigs = () => {
-    console.log(this.props.hogs)
-
+  sortPigs = () => {
     let newOrder = [...this.state.hogs]
-    console.log({newOrder})
-
-
     if (this.props.sort === 'weight') {
        newOrder.sort(function(a, b) {
         return a.weight - b.weight
@@ -71,35 +67,78 @@ class PigsContainer extends Component {
     } else if (this.props.sort === 'name') {
       newOrder.sort(this.nameSort)
     }
+    return newOrder
+  }
 
+  filterPigs = (newOrder) => {
     if (this.props.filter === 'grease') {
       newOrder = newOrder.filter( (pig) => {
         return pig.greased
       })
     }
+    return newOrder
+  }
 
-    console.log('thisisakdjf;ajdoj', newOrder)
-    return newOrder.map ((pig,idx) => {
-      return <PigCard key={idx} img={IMGS[pig.name]} pig={pig} handleMoreInfo={this.handleMoreInfo}/>
+  generatePigs = () => {
+    let newHogs = this.sortPigs()
+    newHogs = this.filterPigs(newHogs)
+
+    return newHogs.map ((pig,idx) => {
+      return (
+        <PigCard
+          key={idx}
+          img={IMGS[pig.name]}
+          pig={pig}
+          handleMoreInfo={this.handleMoreInfo}
+          hidePigCard={this.hidePigCard}
+        />
+      )
     })
+  }
+
+  hidePigCard = (pig) => {
+    if (this.state.hogs.includes(pig)) {
+      let newHogs = [...this.state.hogs]
+      for (let i=0; i < newHogs.length; i++) {
+        if (newHogs[i] === pig) {
+          newHogs.splice(i, 1)
+        }
+      }
+      this.setState({
+        hogs: newHogs
+      })
+    }
   }
 
   showInfo = () => {
     if (this.state.currentPig) {
-      return <PigInfo currentPig={this.state.currentPig}/>
+      return <PigInfo
+        currentPig={this.state.currentPig}
+        removePigInfo={this.removePigInfo}
+      />
     }
+  }
+
+  removePigInfo = () => {
+    this.setState({
+      currentPig: null
+    })
   }
 
   render() {
     return (
       <div>
-          {this.showInfo()}
+        {this.showInfo()}
         <div className="ui grid container">
           {this.generatePigs()}
         </div>
       </div>
     )
   }
+}
+
+const divStyle = {
+  backgroundColor: 'green',
 }
 
 export default PigsContainer

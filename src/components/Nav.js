@@ -12,7 +12,7 @@ const Nav = (props) => {
 			</div>
 			<span className="normalText">A React App for County Fair Hog Fans</span>
 			<div>
-			<select onChange={props.handleSelect}>
+			<select className="filterWrapper" onChange={props.handleSelect}>
 			  <option default value="volvo">Sorty by</option>
 			  <option value="weight">weight</option>
 			  <option value="name">name</option>
