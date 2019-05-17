@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "array-sort-by": "^1.2.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-1": "^6.24.1",
     "react": "^15.6.2",
